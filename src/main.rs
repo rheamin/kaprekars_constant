@@ -1,7 +1,5 @@
 // A simple program to test kaprekars constant 
 
-use rand::Rng;
-
 
 fn main() {
     println!("Kaprekar's Constant demo in Rust");
