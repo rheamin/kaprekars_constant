@@ -10,7 +10,7 @@ fn main() {
 
     for _ in 0..count {
         // generate random 4 digit number
-        let rng = rand::random_range(1000..9999);
+        let rng = rand_number();
         println!("Testing {rng}");
         let it = kaprekar_step(rng);
         println!("{rng} took {it} steps to reach 6174");
@@ -82,4 +82,15 @@ fn prompt_number(msg: String) -> i32 {
         };
     }
     return num;
+}
+
+fn rand_number() -> u32 {
+    loop {
+        let n = rand::random_range(1000..9999);
+        let digits: Vec<char> = n.to_string().chars().collect();
+        let unique_digits: std::collections::HashSet<char> = digits.iter().cloned().collect();
+        if unique_digits.len() > 2 {
+            return n;
+        }
+    }
 }
